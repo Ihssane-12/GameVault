@@ -164,3 +164,9 @@ function loadCartFromStorage() {
     if (Array.isArray(parsed)) appState.cart = parsed;
   } catch (_) {}
 }
+
+function normalizeQuantity(value) {
+  const quantity = Number(value);
+  if (!Number.isFinite(quantity) || quantity < 1) return 1;
+  return Math.floor(quantity);
+}
