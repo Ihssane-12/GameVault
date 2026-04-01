@@ -232,3 +232,8 @@ function getCartSubtotal() {
 function resetSearchField() {
   if (elements.searchInput) elements.searchInput.value = '';
 }
+
+function clearFilters() {
+  appState.selectedCategory = 'All';
+  appState.searchText = '';
+}
