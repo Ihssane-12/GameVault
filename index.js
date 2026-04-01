@@ -170,3 +170,14 @@ function normalizeQuantity(value) {
   if (!Number.isFinite(quantity) || quantity < 1) return 1;
   return Math.floor(quantity);
 }
+
+function startApp() {
+  loadCartFromStorage();
+  renderCategoryButtons();
+  renderGameCards();
+  renderCartItems();
+  renderCartSummary();
+  updateCartBadge();
+  showPage('home');
+}
+startApp();
