@@ -237,3 +237,7 @@ function clearFilters() {
   appState.selectedCategory = 'All';
   appState.searchText = '';
 }
+
+function formatRating(value) {
+  return Number(value).toFixed(1);
+}
