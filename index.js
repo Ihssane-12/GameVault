@@ -194,3 +194,18 @@ function parseGamesFromText(text) {
     return [];
   }
 }
+
+async function loadGamesFromUrl() {
+  try {
+    const response = await fetch(GAMES_URL);
+    const text = await response.text();
+    const games = parseGamesFromText(text);
+    if (Array.isArray(games) && games.length > 0) {
+      // Optional future replacement point for local gameList.
+      return games;
+    }
+  } catch (_) {
+    return [];
+  }
+  return [];
+}
