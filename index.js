@@ -94,3 +94,10 @@ function renderCartSummary() {
   elements.summarySubtotal.textContent = toPriceText(subtotal);
   elements.summaryTotal.textContent = toPriceText(subtotal);
 }
+
+function changeCartItemQuantity(gameId, delta) {
+  const item = appState.cart.find((cartItem) => cartItem.gameId === gameId);
+  if (!item) return;
+  item.quantity += delta;
+  if (item.quantity <= 0) { appState.cart = appState.cart.filter((cartItem) => cartItem.gameId !== gameId); }
+}
