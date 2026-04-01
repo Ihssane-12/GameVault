@@ -28,3 +28,5 @@ const elements = {
 function toPriceText(value) {
   return '$' + value.toFixed(2);
 }
+
+const categoryList = ['All', 'Action', 'Adventure', 'RPG', 'Racing', 'Simulation', 'Strategy'];
