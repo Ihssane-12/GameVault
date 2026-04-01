@@ -126,3 +126,14 @@ elements.homeBtn.addEventListener('click', () => showPage('home'));
 elements.cartBtn.addEventListener('click', () => showPage('cart'));
 elements.mobileCartBtn.addEventListener('click', () => showPage('cart'));
 elements.continueShoppingBtn.addEventListener('click', () => showPage('home'));
+
+function placeOrder() {
+  if (appState.cart.length === 0) return;
+  appState.cart = [];
+  renderCartItems();
+  renderCartSummary();
+  updateCartBadge();
+  showPage('home');
+}
+
+elements.checkoutBtn.addEventListener('click', () => placeOrder());
