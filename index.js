@@ -115,3 +115,14 @@ function updateCartBadge() {
   elements.cartBtn.textContent = Cart ();
   elements.mobileCartBtn.textContent = Cart ();
 }
+
+function showPage(pageName) {
+  if (pageName === 'cart') { elements.homePage.classList.add('hidden'); elements.cartPage.classList.remove('hidden'); return; }
+  elements.cartPage.classList.add('hidden');
+  elements.homePage.classList.remove('hidden');
+}
+
+elements.homeBtn.addEventListener('click', () => showPage('home'));
+elements.cartBtn.addEventListener('click', () => showPage('cart'));
+elements.mobileCartBtn.addEventListener('click', () => showPage('cart'));
+elements.continueShoppingBtn.addEventListener('click', () => showPage('home'));
