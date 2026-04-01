@@ -1,3 +1,6 @@
+// -----------------------------
+// 1) Game data
+// -----------------------------
 const gameList = [
   { id: 1, title: "Cyber Drift", genre: "Racing", price: 19.99, rating: 4.4, image: "https://picsum.photos/seed/game1/600/400" },
   { id: 2, title: "Kingdom Forge", genre: "RPG", price: 39.99, rating: 4.8, image: "https://picsum.photos/seed/game2/600/400" },
