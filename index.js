@@ -146,3 +146,7 @@ function showMessage(message) {
   if (toastTimeoutId) clearTimeout(toastTimeoutId);
   toastTimeoutId = setTimeout(() => elements.toast.classList.add('hidden'), 1800);
 }
+
+function notifyCartAction(action) {
+  showMessage(action);
+}
