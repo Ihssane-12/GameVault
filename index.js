@@ -220,3 +220,7 @@ function isValidGameObject(game) {
 function safeText(value) {
   return String(value ?? '').trim();
 }
+
+function getCartTotalItems() {
+  return appState.cart.reduce((sum, item) => sum + Number(item.quantity || 0), 0);
+}
