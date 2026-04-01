@@ -24,3 +24,7 @@ const elements = {
   checkoutBtn: document.getElementById('checkoutBtn'),
   continueShoppingBtn: document.getElementById('continueShoppingBtn')
 };
+
+function toPriceText(value) {
+  return '$' + value.toFixed(2);
+}
