@@ -109,3 +109,9 @@ function canDecreaseQuantity(item) {
 function deleteCartItem(gameId) {
   appState.cart = appState.cart.filter((item) => item.gameId !== gameId);
 }
+
+function updateCartBadge() {
+  const totalItems = appState.cart.reduce((sum, item) => sum + item.quantity, 0);
+  elements.cartBtn.textContent = Cart ();
+  elements.mobileCartBtn.textContent = Cart ();
+}
