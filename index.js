@@ -137,3 +137,12 @@ function placeOrder() {
 }
 
 elements.checkoutBtn.addEventListener('click', () => placeOrder());
+
+elements.toast = document.getElementById('toast');
+let toastTimeoutId = null;
+function showMessage(message) {
+  elements.toast.textContent = message;
+  elements.toast.classList.remove('hidden');
+  if (toastTimeoutId) clearTimeout(toastTimeoutId);
+  toastTimeoutId = setTimeout(() => elements.toast.classList.add('hidden'), 1800);
+}
