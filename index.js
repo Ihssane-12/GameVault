@@ -216,3 +216,7 @@ async function loadGamesFromUrl() {
 function isValidGameObject(game) {
   return game && Number.isFinite(Number(game.id)) && typeof game.title === 'string';
 }
+
+function safeText(value) {
+  return String(value ?? '').trim();
+}
