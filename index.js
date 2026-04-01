@@ -80,3 +80,17 @@ function addGameToCart(gameId) {
   const existingItem = appState.cart.find((item) => item.gameId === gameId);
   if (existingItem) { existingItem.quantity += 1; } else { appState.cart.push({ gameId, quantity: 1 }); }
 }
+
+function renderCartSummary() {
+  let totalItems = 0;
+  let subtotal = 0;
+  appState.cart.forEach((item) => {
+    const game = gameList.find((g) => g.id === item.gameId);
+    if (!game) return;
+    totalItems += item.quantity;
+    subtotal += game.price * item.quantity;
+  });
+  elements.summaryItems.textContent = String(totalItems);
+  elements.summarySubtotal.textContent = toPriceText(subtotal);
+  elements.summaryTotal.textContent = toPriceText(subtotal);
+}
