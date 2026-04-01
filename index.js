@@ -75,3 +75,8 @@ elements.gamesGrid.addEventListener('click', (event) => {
   const gameId = Number(button.dataset.gameId);
   addGameToCart(gameId);
 });
+
+function addGameToCart(gameId) {
+  const existingItem = appState.cart.find((item) => item.gameId === gameId);
+  if (existingItem) { existingItem.quantity += 1; } else { appState.cart.push({ gameId, quantity: 1 }); }
+}
