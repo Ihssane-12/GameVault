@@ -6,3 +6,4 @@ const gameList = [
   { id: 5, title: "Star Tactics", genre: "Strategy", price: 34.99, rating: 4.6, image: "https://picsum.photos/seed/game5/600/400" },
   { id: 6, title: "Pixel Quest", genre: "Adventure", price: 14.99, rating: 4.1, image: "https://picsum.photos/seed/game6/600/400" }
 ];
+const appState = { selectedCategory: 'All', searchText: '', cart: [] };
