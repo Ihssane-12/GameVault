@@ -155,3 +155,12 @@ const CART_STORAGE_KEY = 'gamevault_cart_v1';
 function saveCartToStorage() {
   localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(appState.cart));
 }
+
+function loadCartFromStorage() {
+  const raw = localStorage.getItem(CART_STORAGE_KEY);
+  if (!raw) return;
+  try {
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) appState.cart = parsed;
+  } catch (_) {}
+}
