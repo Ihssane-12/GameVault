@@ -38,3 +38,20 @@ function getVisibleGames() {
     return categoryOk && searchOk;
   });
 }
+
+function renderCategoryButtons() {
+  elements.categoryFilters.innerHTML = categoryList.map((category) => {
+    const isActive = appState.selectedCategory === category;
+    return `<button type="button" data-category="${category}" class="rounded-full border px-3 py-1 text-sm ${isActive ? 'border-slate-900 bg-slate-900 text-white' : 'border-slate-300 bg-white text-slate-700 hover:bg-slate-50'}">${category}</button>`;
+  }).join('');
+}
+
+function renderGameCards() {
+  const visibleGames = getVisibleGames();
+  elements.gamesGrid.innerHTML = visibleGames.map((game) => {
+    return `<article class="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm"><img src="${game.image}" alt="${game.title}" class="h-40 w-full object-cover" /><div class="p-4"><p class="text-xs font-medium uppercase tracking-wide text-slate-500">${game.genre}</p><h3 class="mt-1 text-base font-semibold text-slate-900">${game.title}</h3><p class="mt-1 text-sm text-slate-600">Rating: ${game.rating}</p><div class="mt-3 flex items-center justify-between"><span class="text-sm font-bold text-slate-900">${toPriceText(game.price)}</span><button type="button" data-game-id="${game.id}" class="rounded bg-slate-900 px-3 py-1.5 text-xs font-medium text-white hover:bg-slate-700">Add to Cart</button></div></div></article>`;
+  }).join('');
+}
+
+renderCategoryButtons();
+renderGameCards();
