@@ -183,3 +183,14 @@ function startApp() {
 startApp();
 
 const GAMES_URL = 'https://example.com/games.js';
+
+function parseGamesFromText(text) {
+  try {
+    const start = text.indexOf('[');
+    const end = text.lastIndexOf(']');
+    if (start === -1 || end === -1) return [];
+    return JSON.parse(text.slice(start, end + 1));
+  } catch (_) {
+    return [];
+  }
+}
