@@ -55,3 +55,11 @@ function renderGameCards() {
 
 renderCategoryButtons();
 renderGameCards();
+
+elements.categoryFilters.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-category]');
+  if (!button) return;
+  appState.selectedCategory = button.dataset.category;
+  renderCategoryButtons();
+  renderGameCards();
+});
