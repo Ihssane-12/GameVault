@@ -228,3 +228,7 @@ function getCartTotalItems() {
 function getCartSubtotal() {
   return appState.cart.reduce((sum, item) => sum + Number(item.price || 0) * Number(item.quantity || 0), 0);
 }
+
+function resetSearchField() {
+  if (elements.searchInput) elements.searchInput.value = '';
+}
