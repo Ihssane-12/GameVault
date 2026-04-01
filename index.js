@@ -150,3 +150,8 @@ function showMessage(message) {
 function notifyCartAction(action) {
   showMessage(action);
 }
+
+const CART_STORAGE_KEY = 'gamevault_cart_v1';
+function saveCartToStorage() {
+  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(appState.cart));
+}
