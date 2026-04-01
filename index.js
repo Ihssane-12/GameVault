@@ -63,3 +63,8 @@ elements.categoryFilters.addEventListener('click', (event) => {
   renderCategoryButtons();
   renderGameCards();
 });
+
+elements.searchInput.addEventListener('input', (event) => {
+  appState.searchText = event.target.value;
+  renderGameCards();
+});
