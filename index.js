@@ -101,3 +101,7 @@ function changeCartItemQuantity(gameId, delta) {
   item.quantity += delta;
   if (item.quantity <= 0) { appState.cart = appState.cart.filter((cartItem) => cartItem.gameId !== gameId); }
 }
+
+function canDecreaseQuantity(item) {
+  return item.quantity > 1;
+}
