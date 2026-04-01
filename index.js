@@ -68,3 +68,10 @@ elements.searchInput.addEventListener('input', (event) => {
   appState.searchText = event.target.value;
   renderGameCards();
 });
+
+elements.gamesGrid.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-game-id]');
+  if (!button) return;
+  const gameId = Number(button.dataset.gameId);
+  addGameToCart(gameId);
+});
