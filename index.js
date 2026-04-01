@@ -181,3 +181,5 @@ function startApp() {
   showPage('home');
 }
 startApp();
+
+const GAMES_URL = 'https://example.com/games.js';
