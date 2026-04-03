@@ -6,3 +6,4 @@ const games = [
     { id: 5, title: "Doom Eternal", price: 29.99, genre: "FPS", image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=500" },
     { id: 6, title: "Spider-Man 2", price: 79.99, genre: "Action", image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=500" },
 ];
+let cart = JSON.parse(localStorage.getItem('gamevault_cart')) || [];
