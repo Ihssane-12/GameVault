@@ -66,3 +66,25 @@ function updateCart() {
     cartCount.innerText = cart.reduce((acc, item) => acc + item.quantity, 0);
     renderCart();
 }
+function renderCart() {
+    cartItemsContainer.innerHTML = cart.length === 0 
+        ? `<p class="text-center py-10">Votre panier est vide...</p>`
+        : cart.map(item => `
+        <div class="flex items-center gap-4 bg-white/5 p-4 rounded-2xl">
+            <img src="${item.image}" class="w-16 h-16 object-cover rounded-xl">
+            <div class="flex-grow">
+                <h4 class="font-bold">${item.title}</h4>
+                <p>${item.price} €</p>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="changeQty(${item.id}, -1)">-</button>
+                <span>${item.quantity}</span>
+                <button onclick="changeQty(${item.id}, 1)">+</button>
+            </div>
+            <button onclick="removeFromCart(${item.id})">X</button>
+        </div>
+    `).join('');
+
+    const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    cartTotal.innerText = `${total.toFixed(2)} €`;
+}
