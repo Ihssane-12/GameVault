@@ -61,3 +61,8 @@ window.addToCart = (id) => {
     updateCart();
 };
 
+function updateCart() {
+    localStorage.setItem('gamevault_cart', JSON.stringify(cart));
+    cartCount.innerText = cart.reduce((acc, item) => acc + item.quantity, 0);
+    renderCart();
+}
