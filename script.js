@@ -96,3 +96,7 @@ window.changeQty = (id, delta) => {
 
     updateCart();
 };
+window.removeFromCart = (id) => {
+    cart = cart.filter(i => i.id !== id);
+    updateCart();
+};
