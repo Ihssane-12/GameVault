@@ -88,3 +88,11 @@ function renderCart() {
     const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
     cartTotal.innerText = `${total.toFixed(2)} €`;
 }
+window.changeQty = (id, delta) => {
+    const item = cart.find(i => i.id === id);
+    item.quantity += delta;
+
+    if (item.quantity < 1) return removeFromCart(id);
+
+    updateCart();
+};
