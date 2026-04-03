@@ -100,3 +100,4 @@ window.removeFromCart = (id) => {
     cart = cart.filter(i => i.id !== id);
     updateCart();
 };
+searchInput.addEventListener('input', handleFilters);
