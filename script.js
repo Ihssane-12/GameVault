@@ -7,3 +7,10 @@ const games = [
     { id: 6, title: "Spider-Man 2", price: 79.99, genre: "Action", image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=500" },
 ];
 let cart = JSON.parse(localStorage.getItem('gamevault_cart')) || [];
+const gamesGrid = document.getElementById('gamesGrid');
+const searchInput = document.getElementById('searchInput');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cartSection = document.getElementById('cartSection');
+const cartItemsContainer = document.getElementById('cartItems');
+const cartCount = document.getElementById('cartCount');
+const cartTotal = document.getElementById('cartTotal');
