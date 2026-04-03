@@ -14,3 +14,24 @@ const cartSection = document.getElementById('cartSection');
 const cartItemsContainer = document.getElementById('cartItems');
 const cartCount = document.getElementById('cartCount');
 const cartTotal = document.getElementById('cartTotal');
+function displayGames(filteredGames) {
+    gamesGrid.innerHTML = filteredGames.map(game => `
+        <div class="game-card bg-white/5 rounded-2xl overflow-hidden flex flex-col">
+            <div class="relative h-56 overflow-hidden">
+                <img src="${game.image}" alt="${game.title}" class="w-full h-full object-cover">
+                <span class="absolute top-3 left-3 bg-primary/80 text-secondary text-[10px] font-black px-3 py-1 rounded-full">
+                    ${game.genre}
+                </span>
+            </div>
+            <div class="p-5 flex-grow flex flex-col justify-between">
+                <h3 class="text-xl font-bold mb-4 text-light">${game.title}</h3>
+                <div class="flex justify-between items-center">
+                    <span class="text-2xl font-black text-secondary">${game.price} €</span>
+                    <button onclick="addToCart(${game.id})" class="bg-secondary text-primary px-4 py-2 rounded-lg font-bold">
+                        + AJOUTER
+                    </button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
