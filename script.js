@@ -48,4 +48,16 @@ function handleFilters() {
 
     displayGames(filtered);
 }
+window.addToCart = (id) => {
+    const game = games.find(g => g.id === id);
+    const itemInCart = cart.find(item => item.id === id);
+
+    if (itemInCart) {
+        itemInCart.quantity++;
+    } else {
+        cart.push({ ...game, quantity: 1 });
+    }
+
+    updateCart();
+};
 
