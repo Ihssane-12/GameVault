@@ -35,3 +35,17 @@ function displayGames(filteredGames) {
         </div>
     `).join('');
 }
+function handleFilters() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const activeBtn = document.querySelector('.filter-btn.bg-secondary');
+    const activeCategory = activeBtn ? activeBtn.dataset.category : 'all';
+
+    const filtered = games.filter(game => {
+        const matchesSearch = game.title.toLowerCase().includes(searchTerm);
+        const matchesCategory = activeCategory === 'all' || game.genre === activeCategory;
+        return matchesSearch && matchesCategory;
+    });
+
+    displayGames(filtered);
+}
+
