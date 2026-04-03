@@ -6,7 +6,9 @@ const games = [
     { id: 5, title: "Doom Eternal", price: 29.99, genre: "FPS", image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=500" },
     { id: 6, title: "Spider-Man 2", price: 79.99, genre: "Action", image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=500" },
 ];
+
 let cart = JSON.parse(localStorage.getItem('gamevault_cart')) || [];
+
 const gamesGrid = document.getElementById('gamesGrid');
 const searchInput = document.getElementById('searchInput');
 const filterBtns = document.querySelectorAll('.filter-btn');
@@ -14,6 +16,7 @@ const cartSection = document.getElementById('cartSection');
 const cartItemsContainer = document.getElementById('cartItems');
 const cartCount = document.getElementById('cartCount');
 const cartTotal = document.getElementById('cartTotal');
+
 function displayGames(filteredGames) {
     gamesGrid.innerHTML = filteredGames.map(game => `
         <div class="game-card bg-white/5 rounded-2xl overflow-hidden flex flex-col">
@@ -35,6 +38,7 @@ function displayGames(filteredGames) {
         </div>
     `).join('');
 }
+
 function handleFilters() {
     const searchTerm = searchInput.value.toLowerCase();
     const activeBtn = document.querySelector('.filter-btn.bg-secondary');
@@ -48,6 +52,7 @@ function handleFilters() {
 
     displayGames(filtered);
 }
+
 window.addToCart = (id) => {
     const game = games.find(g => g.id === id);
     const itemInCart = cart.find(item => item.id === id);
@@ -66,6 +71,7 @@ function updateCart() {
     cartCount.innerText = cart.reduce((acc, item) => acc + item.quantity, 0);
     renderCart();
 }
+
 function renderCart() {
     cartItemsContainer.innerHTML = cart.length === 0 
         ? `<p class="text-center py-10">Votre panier est vide...</p>`
@@ -88,6 +94,7 @@ function renderCart() {
     const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
     cartTotal.innerText = `${total.toFixed(2)} €`;
 }
+
 window.changeQty = (id, delta) => {
     const item = cart.find(i => i.id === id);
     item.quantity += delta;
@@ -96,8 +103,33 @@ window.changeQty = (id, delta) => {
 
     updateCart();
 };
+
 window.removeFromCart = (id) => {
     cart = cart.filter(i => i.id !== id);
     updateCart();
 };
+
 searchInput.addEventListener('input', handleFilters);
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('bg-secondary'));
+        btn.classList.add('bg-secondary');
+        handleFilters();
+    });
+});
+
+document.getElementById('cartBtn').addEventListener('click', () => cartSection.classList.remove('hidden'));
+document.getElementById('closeCart').addEventListener('click', () => cartSection.classList.add('hidden'));
+
+document.getElementById('checkoutBtn').addEventListener('click', () => {
+    if (cart.length === 0) return;
+    alert("Commande confirmée !");
+    cart = [];
+    updateCart();
+    cartSection.classList.add('hidden');
+});
+
+// Init
+displayGames(games);
+updateCart();
